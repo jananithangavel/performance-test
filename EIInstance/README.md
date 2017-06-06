@@ -35,6 +35,12 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
 
 `netty 192.168.*.*`
 
+4. Add the following into the ei/wso2ei-6.1.0/bin/integrator.sh under the $JVM_MEM_OPTS \
+      -XX:+PrintGC \
+      -XX:+PrintGCDetails \
+      -XX:+PrintGCDateStamps\
+      -Xloggc:"$CARBON_HOME/repository/logs/gc.log"\
+
 ## Run Scripts
 
 1. Move all files in this folder in to home location of instance. 
