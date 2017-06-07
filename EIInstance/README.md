@@ -40,6 +40,7 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
       -XX:+PrintGCDetails \
       -XX:+PrintGCDateStamps\
       -Xloggc:"$CARBON_HOME/repository/logs/gc.log"\
+5. Edit configure_instance.sh line 4 product as your use for example if you use esb the product="wso2esb-5.0.0"
 
 ## Run Scripts
 
