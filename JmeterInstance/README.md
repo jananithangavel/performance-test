@@ -39,6 +39,10 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
 
 6. Edit ESB_Perf.jmx with ip of EI
 
+7. Edit esb-perf-execution.sh line 6 product as your use
+   for example if you use esb the 
+   product="wso2esb-5.0.0"
+
 ## Run Scripts
 
 1. Move all files in this folder in to home location of instance. 
