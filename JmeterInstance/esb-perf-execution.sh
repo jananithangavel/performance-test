@@ -3,13 +3,14 @@
 ei_ssh_host=esbperfesb
 backend_ssh_host=esbperfbackend
 
+product="wso2ei-6.1.1" #"ei"
 
 echo "Starting remote Netty backend"
 ssh esbperfbackend "~/netty_start.sh 0"
 sleep 10
 
 echo "Starting remote ESB Server!"
-ssh esbperfesb "./start_ei.sh"
+ssh esbperfesb "./start_ei.sh $product"
 sleep 10
 
 echo "Checking ESB Server Health"
@@ -38,7 +39,7 @@ java -jar -Xms2g -Xmx2g jtlprocessor/TrimJTL.jar jtl_results/$4_C_$2_T_$3_P_$5.j
 echo "Generating reports!!!"
 ~/apache-jmeter-3.2/bin/jmeter -g processed_results/$4_C_$2_T_$3_P_$5.jtl -o reports/$4_C_$2_T_$3_P_$5
 
-scp $ei_ssh_host:~/ei/wso2ei-6.1.0/repository/logs/gc.log $PWD/results/gclogs/ei_gc_$4_C_$2_T_$3_P_$5.log
+scp $ei_ssh_host:~/product/$product/repository/logs/gc.log $PWD/results/gclogs/ei_gc_$4_C_$2_T_$3_P_$5.log
 scp $backend_ssh_host:~/netty/netty_backend/tmp/nettygc.log $PWD/results/gclogs/netty_gc_$4_C_$2_T_$3_P_$5.log
 sar -q > results/$2/jmeter_loadavg_$4_C_$2_T_$3_P_$5.txt
 ssh $ei_ssh_host "sar -q" > results/$2/ei_loadavg_$4_C_$2_T_$3_P_$5.txt
