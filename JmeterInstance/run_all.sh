@@ -14,8 +14,7 @@ else mkdir processed_results
 fi
 
 concurrent_users=(10 50 100 500 1000 1500 2000 2500)
-proxy_type=(DirectProxy)
-# CBRProxy CBRSOAPHeaderProxy CBRTransportHeaderProxy SecureProxy XSLTEnhancedProxy XSLTProxy)
+proxy_type=(DirectProxy CBRProxy CBRSOAPHeaderProxy CBRTransportHeaderProxy SecureProxy XSLTEnhancedProxy XSLTProxy)
 request_payloads=(1K_buyStocks.xml 5K_buyStocks.xml 10K_buyStocks.xml 100K_buyStocks.xml 500K_buyStocks.xml 500B_buyStocks.xml)
 secure_payloads=(1K_buyStocks_secure.xml 5K_buyStocks_secure.xml 10K_buyStocks_secure.xml 100K_buyStocks_secure.xml 500K_buyStocks_secure.xml 500B_buyStocks_secure.xml)
 
