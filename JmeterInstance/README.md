@@ -39,8 +39,10 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
 
 6. Edit ESB_Perf.jmx with ip of EI
 
-7. Edit esb-perf-execution.sh line 6 product as your use
-   for example if you use esb the 
+7. Edit esb-perf-execution.sh line 6 the variable product as your use
+
+   For example if you want to use esb then 
+   
    product="wso2esb-5.0.0"
 
 ## Run Scripts
