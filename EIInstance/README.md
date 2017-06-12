@@ -44,6 +44,8 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
 5. Edit configure_instance.sh line 4 the variable product as your use 
       For example if you want to use esb then
       product="wso2esb-5.0.0"
+      
+      
 
 ## Run Scripts
 
