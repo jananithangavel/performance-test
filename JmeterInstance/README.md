@@ -31,7 +31,7 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
 
 2. Add instance hostname in to /etc/hosts
 
-3. Add server in to a folder (Ex: ~/key) and give permission as "chmod +x keyFile"
+3. Add server key in to a folder (Ex: ~/key) and give permission as "chmod 600 keyFile"
 
 4. Edit config file with respective IPs. Give file path to key file.
 
@@ -39,7 +39,11 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
 
 6. Edit ESB_Perf.jmx with ip of EI
 
-7. Edit esb-perf-execution.sh line 6 the variable product as your use
+7. Jmeter should be downloaded and update path to it in script.
+
+Note: Script refer path as "~/software/"
+
+8. Edit esb-perf-execution.sh line 6 the variable product as your use
 
    For example if you want to use esb then 
    
