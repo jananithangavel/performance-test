@@ -31,6 +31,10 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
 
 2. Add instance hostname in to /etc/hosts
 
+3. Netty service path should be given in script.
+
+Note: Script refer path as "~/software/netty"
+
 ## Run Scripts
 
 1. Move all files in this folder in to home location of instance. 
