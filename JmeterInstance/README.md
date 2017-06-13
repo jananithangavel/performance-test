@@ -1,7 +1,7 @@
-Configuring Backend Instance
+Configuring Jmeter Instance
 ============================
 
-Follow these steps to configure backend instance
+Follow these steps to configure Jmeter instance
 
 ## Prerequisites
 
