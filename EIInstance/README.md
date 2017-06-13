@@ -1,7 +1,7 @@
-Configuring Backend Instance
+Configuring EI Instance
 ============================
 
-Follow these steps to configure backend instance
+Follow these steps to configure ei instance
 
 ## Prerequisites
 
@@ -27,13 +27,13 @@ Similarly for Java 8, following are the files required
 
 The Java Demos and Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy files are optional.
 
-Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folder. Please update relevant files accordingly.
+Note: Script refer path for JDK as "software/java". Update path to JDK in script.
 
 2. Add instance hostname in to /etc/hosts
 
 3. Add following line in to /etc/hosts with the ip of EI server instance
 
-`netty 192.168.*.*`
+`192.168.*.* netty`
 
 4. Add the following into the ei/wso2ei-6.1.0/bin/integrator.sh under the $JVM_MEM_OPTS \
       -XX:+PrintGC \
@@ -46,7 +46,10 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
    For example if you want to use esb then
  
    product="wso2esb-5.0.0"
-      
+   
+6. EI pack should be downloaded and update path to pack in script.
+
+Note: Script refer path as "~/software/"
       
 
 ## Run Scripts
