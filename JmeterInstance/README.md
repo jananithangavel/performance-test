@@ -33,7 +33,7 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
 
 3. Add server key in to a folder (Ex: ~/key) and give permission as "chmod 600 keyFile"
 
-4. Edit config file with respective IPs. Give file path to key file.
+4. Edit config file with respective IPs and hosts. Give file path to key file.
 
 5. Edit run_all script with ip of EI Server
 
@@ -43,7 +43,9 @@ Note: This folder contains "jdk-8u131-linux-x64.tar.gz" in "software/java" folde
 
 Note: Script refer path as "~/software/"
 
-8. Edit esb-perf-execution.sh line 6 the variable product as your use
+8. Edit esb-perf-execution.sh file with respective hosts
+
+9. Edit esb-perf-execution.sh line 6 the variable product as your use
 
    For example if you want to use esb then 
    
