@@ -3,7 +3,7 @@
 ei_ssh_host=esbperfesb
 backend_ssh_host=esbperfbackend
 
-product="wso2ei-6.1.1" #"ei"
+product="wso2ei-6.1.1" #"wso2esb-5.0.0"
 
 echo "Starting remote Netty backend"
 ssh esbperfbackend "~/netty_start.sh 0"
@@ -27,14 +27,14 @@ sleep 10
 
 echo "Jmeter script execution goes here!!!"
 JVM_ARGS="-Xms2g -Xmx2g -XX:+PrintGC -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:$PWD/results/$2/gclogs/jmeter_gc_$1_$2.log"
-echo "# Running JMeter. Concurrent Users: $2 Service: $4. Duration: $3 JVM Args: $JVM_ARGS"
+echo "# Running JMeter. Concurrent Users: $2 Service: $4. Duration: $3 Payload:$5 JVM Args: $JVM_ARGS"
 ~/apache-jmeter-3.2/bin/jmeter.sh -JConcurrency=$2 -JDuration=$3 -JHost=$1 -JService=$4 -JPayload=$5 -n -t jmeter/ESB_Perf.jmx -l jtl_results/$4_C_$2_T_$3_P_$5.jtl
 ss -s > results/$2/jmeter_ss_$4_C_$2_T_$3_P_$5.txt
-ssh esbperfesb "ss -s" > results/$2/ei_ss_$2.txt
-ssh esbperfbackend "ss -s" > results/$2/netty_ss_$2.txt
+ssh esbperfesb "ss -s" > results/$2/ei_ss_$4_C_$2_T_$3_P_$5.txt
+ssh esbperfbackend "ss -s" > results/$2/netty_ss_$4_C_$2_T_$3_P_$5.txt
 
 echo "Warm up period removing..."
-java -jar -Xms2g -Xmx2g jtlprocessor/TrimJTL.jar jtl_results/$4_C_$2_T_$3_P_$5.jtl processed_results/$4_C_$2_T_$3_P_$5.jtl 300
+java -jar -Xms2g -Xmx2g jtlprocessor/TrimJTL.jar jtl_results/$4_C_$2_T_$3_P_$5.jtl processed_results/$4_C_$2_T_$3_P_$5.jtl 600
 
 echo "Generating reports!!!"
 ~/apache-jmeter-3.2/bin/jmeter -g processed_results/$4_C_$2_T_$3_P_$5.jtl -o reports/$4_C_$2_T_$3_P_$5
@@ -49,6 +49,13 @@ ssh $backend_ssh_host "sar -q" > results/$2/backend_loadavg_$4_C_$2_T_$3_P_$5.tx
 ssh $backend_ssh_host "top -bn 1" > results/$2/backend_top_$4_C_$2_T_$3_P_$5.txt
 ssh $backend_ssh_host "ps u -p \`pgrep -f netty\`" > results/$2/backend_ps_$4_C_$2_T_$3_P_$5.txt
 
+tar -czvf jtl_results/$4_C_$2_T_$3_P_$5.jtl.tar.gz jtl_results/$4_C_$2_T_$3_P_$5.jtl
+tar -czvf processed_results/$4_C_$2_T_$3_P_$5.jtl.tar.gz processed_results/$4_C_$2_T_$3_P_$5.jtl
+tar -czvf reports/$4_C_$2_T_$3_P_$5.tar.gz reports/$4_C_$2_T_$3_P_$5
+
+rm -r jtl_results/$4_C_$2_T_$3_P_$5.jtl
+rm -r processed_results/$4_C_$2_T_$3_P_$5.jtl
+rm -r reports/$4_C_$2_T_$3_P_$5
 
 echo "Done"
 
